@@ -1,6 +1,5 @@
 # Itqan Agency - Premium AI & Web Solutions 🚀
 
-![Itqan Agency Banner](frontend/public/hero_bg_premium.png)
 
 ## 🌟 Overview
 Itqan Agency is a high-end software development agency specializing in **AI Automation**, **Custom Web Development**, and **Data-Driven Solutions**. This platform showcases our expertise with a premium, modern aesthetic and provides a seamless user experience across multiple languages.
