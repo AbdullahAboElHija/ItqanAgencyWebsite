@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import api from '../../services/api';
 
-const ProjectForm = ({ onSuccess, projectToEdit, onCancel }) => {
+const ProjectForm = ({ onSuccess, projectToEdit, onCancel, onDelete }) => {
     const [formData, setFormData] = useState({
         titleEn: projectToEdit?.title?.en || '',
         titleAr: projectToEdit?.title?.ar || '',
@@ -136,15 +136,29 @@ const ProjectForm = ({ onSuccess, projectToEdit, onCancel }) => {
                 <label className="ml-2 block text-sm text-gray-900">Feature this project on Home/Portfolio</label>
             </div>
 
-            <div className="flex justify-end space-x-3">
-                <button type="button" onClick={onCancel} className="px-4 py-2 border rounded text-gray-700 hover:bg-gray-50">Cancel</button>
-                <button
-                    type="submit"
-                    disabled={loading}
-                    className="px-4 py-2 bg-primary text-white rounded hover:bg-emerald-700 disabled:opacity-50"
-                >
-                    {loading ? 'Saving...' : 'Save Project'}
-                </button>
+            <div className="flex justify-between items-center">
+                {projectToEdit ? (
+                    <button
+                        type="button"
+                        onClick={() => onDelete(projectToEdit._id)}
+                        className="px-4 py-2 bg-red-100 text-red-600 rounded hover:bg-red-200 border border-red-200 font-medium"
+                    >
+                        Delete Project
+                    </button>
+                ) : (
+                    <div></div> // Spacer
+                )}
+
+                <div className="space-x-3">
+                    <button type="button" onClick={onCancel} className="px-4 py-2 border rounded text-gray-700 hover:bg-gray-50">Cancel</button>
+                    <button
+                        type="submit"
+                        disabled={loading}
+                        className="px-4 py-2 bg-primary text-white rounded hover:bg-emerald-700 disabled:opacity-50"
+                    >
+                        {loading ? 'Saving...' : 'Save Project'}
+                    </button>
+                </div>
             </div>
         </form>
     );

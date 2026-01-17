@@ -32,11 +32,17 @@ const Dashboard = () => {
         if (window.confirm('Are you sure you want to delete this project?')) {
             try {
                 await api.delete(`/projects/${id}`);
-                fetchProjects();
+                setProjects(projects.filter(p => p._id !== id)); // Immediate UI update
+                alert('Project deleted successfully');
+                return true;
             } catch (error) {
-                alert('Failed to delete project');
+                console.error('Delete failed:', error);
+                const msg = error.response?.data?.message || 'Failed to delete project. Check console for details.';
+                alert(msg);
+                return false;
             }
         }
+        return false;
     };
 
     const handleEdit = (project) => {
@@ -104,6 +110,13 @@ const Dashboard = () => {
                             onCancel={() => {
                                 setView('list');
                                 setEditingProject(null);
+                            }}
+                            onDelete={async (id) => {
+                                const success = await handleDelete(id);
+                                if (success) {
+                                    setView('list');
+                                    setEditingProject(null);
+                                }
                             }}
                             projectToEdit={editingProject}
                         />

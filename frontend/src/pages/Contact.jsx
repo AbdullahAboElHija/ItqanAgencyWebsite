@@ -73,30 +73,35 @@ const Contact = () => {
 
                             <div className="space-y-6">
                                 <div className="flex items-start space-x-4 rtl:space-x-reverse">
-                                    <div className="bg-emerald-100 p-3 rounded-full text-primary">
+                                    <div className="bg-emerald-100 p-3 rounded-full text-primary shrink-0">
                                         <FiMail className="w-6 h-6" />
                                     </div>
-                                    <div>
+                                    <div className="text-left rtl:text-right">
                                         <p className="text-sm text-gray-500 font-bold uppercase tracking-wider">Email</p>
                                         <p className="text-lg text-gray-800 font-medium">itqanaiagency@gmail.com</p>
                                     </div>
                                 </div>
 
-                                <div className="flex items-start space-x-4 rtl:space-x-reverse">
-                                    <div className="bg-emerald-100 p-3 rounded-full text-primary">
+                                <a
+                                    href="https://wa.me/972505398835"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-start space-x-4 rtl:space-x-reverse group hover:bg-gray-50 p-2 -ml-2 rounded-lg transition-colors cursor-pointer"
+                                >
+                                    <div className="bg-emerald-100 p-3 rounded-full text-primary group-hover:bg-emerald-200 transition-colors shrink-0">
                                         <FiPhone className="w-6 h-6" />
                                     </div>
-                                    <div>
+                                    <div className="text-left rtl:text-right">
                                         <p className="text-sm text-gray-500 font-bold uppercase tracking-wider">WhatsApp</p>
-                                        <p className="text-lg text-gray-800 font-medium">+972 50 123 4567</p>
+                                        <p className="text-lg text-gray-800 font-medium group-hover:text-primary transition-colors" dir="ltr">+972 50 539 8835</p>
                                     </div>
-                                </div>
+                                </a>
 
                                 <div className="flex items-start space-x-4 rtl:space-x-reverse">
-                                    <div className="bg-emerald-100 p-3 rounded-full text-primary">
+                                    <div className="bg-emerald-100 p-3 rounded-full text-primary shrink-0">
                                         <FiMapPin className="w-6 h-6" />
                                     </div>
-                                    <div>
+                                    <div className="text-left rtl:text-right">
                                         <p className="text-sm text-gray-500 font-bold uppercase tracking-wider">Location</p>
                                         <p className="text-lg text-gray-800 font-medium">Haifa, Israel</p>
                                     </div>

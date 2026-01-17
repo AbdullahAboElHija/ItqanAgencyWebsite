@@ -21,6 +21,7 @@ const ProjectCard = ({ project }) => {
                     <img
                         src={project.images[0]}
                         alt={getTitle()}
+                        loading="lazy"
                         className="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500"
                     />
                 ) : (

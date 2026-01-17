@@ -15,6 +15,8 @@ export default {
             },
             fontFamily: {
                 sans: ['Inter', 'sans-serif'],
+                arabic: ['Cairo', 'sans-serif'],
+                heebo: ['Heebo', 'sans-serif'],
             },
             container: {
                 center: true,

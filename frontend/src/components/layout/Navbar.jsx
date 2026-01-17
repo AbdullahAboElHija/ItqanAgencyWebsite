@@ -18,9 +18,9 @@ const Navbar = () => {
     ];
 
     const languages = [
-        { code: 'en', label: 'En' },
-        { code: 'ar', label: 'عربي' },
-        { code: 'he', label: 'עברית' },
+        { code: 'ar', label: 'AR' },
+        { code: 'he', label: 'HE' },
+        { code: 'en', label: 'EN' },
     ];
 
     return (
@@ -46,25 +46,32 @@ const Navbar = () => {
                         ))}
 
                         {/* Language Switcher */}
-                        <div className="relative group">
-                            <button className="flex items-center space-x-1 text-secondary hover:text-primary">
-                                <FiGlobe className="w-5 h-5" />
-                                <span className="uppercase text-sm font-bold">{language}</span>
-                            </button>
-                            <div className="absolute right-0 mt-2 w-32 bg-white rounded-md shadow-lg py-1 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none group-hover:pointer-events-auto border border-gray-100">
-                                {languages.map((lang) => (
+                        {/* Language Switcher */}
+                        <div className="flex items-center space-x-2 rtl:space-x-reverse">
+                            {languages.map((lang) => {
+                                const isActive = language === lang.code;
+                                return (
                                     <button
                                         key={lang.code}
                                         onClick={() => changeLanguage(lang.code)}
                                         className={clsx(
-                                            "block w-full text-left px-4 py-2 text-sm hover:bg-gray-50",
-                                            language === lang.code ? "text-primary font-bold" : "text-gray-700"
+                                            "relative px-3 py-1 text-sm font-bold rounded-md transition-colors border",
+                                            isActive
+                                                ? "text-white border-primary shadow-sm"
+                                                : "bg-gray-50 text-gray-600 border-gray-200 hover:bg-white hover:border-primary/50 hover:text-primary"
                                         )}
                                     >
-                                        {lang.label}
+                                        {isActive && (
+                                            <motion.div
+                                                layoutId="active-lang"
+                                                className="absolute inset-0 bg-primary rounded-md"
+                                                transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                                            />
+                                        )}
+                                        <span className="relative z-10">{lang.label}</span>
                                     </button>
-                                ))}
-                            </div>
+                                );
+                            })}
                         </div>
                     </div>
 
