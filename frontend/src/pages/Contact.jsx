@@ -106,6 +106,36 @@ const Contact = () => {
                                         <p className="text-lg text-gray-800 font-medium">Haifa, Israel</p>
                                     </div>
                                 </div>
+
+                                {/* AI Bot Card */}
+                                <div className="pt-6 border-t border-gray-100">
+                                    <div
+                                        onClick={() => {
+                                            // Trigger the floating chat widget if it exists
+                                            const chatButton = document.querySelector('.chat-widget-button');
+                                            if (chatButton) chatButton.click();
+                                        }}
+                                        className="bg-primary/5 border border-primary/20 p-6 rounded-2xl cursor-pointer hover:bg-primary/10 transition-all group"
+                                    >
+                                        <div className="flex items-center gap-4">
+                                            <div className="w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center text-2xl animate-pulse">
+                                                I
+                                            </div>
+                                            <div>
+                                                <h4 className="font-bold text-secondary group-hover:text-primary transition-colors">
+                                                    {t({ en: "Chat with Itqan Bot", ar: "تحدث مع روبوت إتقان", he: "צ'אט עם הבוט של איתקאן" })}
+                                                </h4>
+                                                <p className="text-sm text-gray-600">
+                                                    {t({
+                                                        en: "Get instant answers about our services and offers.",
+                                                        ar: "احصل على إجابات فورية حول خدماتنا وعروضنا.",
+                                                        he: "קבל תשובות מיידיות על השירותים והמבצעים שלנו."
+                                                    })}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 

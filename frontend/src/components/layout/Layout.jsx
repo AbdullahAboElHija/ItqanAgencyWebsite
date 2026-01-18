@@ -2,6 +2,7 @@ import Navbar from './Navbar';
 import Footer from './Footer';
 import { Outlet } from 'react-router-dom';
 import { useLanguage } from '../../context/LanguageContext';
+import ChatWidget from '../chat/ChatWidget';
 
 const Layout = () => {
     const { language } = useLanguage();
@@ -19,6 +20,7 @@ const Layout = () => {
                 <Outlet />
             </main>
             <Footer />
+            <ChatWidget />
         </div>
     );
 };

@@ -1,5 +1,7 @@
 const asyncHandler = require('express-async-handler');
 const Message = require('../models/Message');
+const { sendLeadNotification } = require('../utils/emailService');
+const { appendLeadToSheet } = require('../utils/sheetsService');
 
 // @desc    Create new message (Contact Form)
 // @route   POST /api/v1/messages
@@ -13,6 +15,19 @@ const createMessage = asyncHandler(async (req, res) => {
         phone,
         service,
         content
+    });
+
+    // Send notifications in the background
+    // We don't await them to ensure the user gets a response quickly
+    // but we log errors within the services
+    sendLeadNotification({ name, email, phone, service, content });
+    appendLeadToSheet({
+        name,
+        email,
+        phone,
+        service,
+        content,
+        createdAt: message.createdAt
     });
 
     res.status(201).json(message);
